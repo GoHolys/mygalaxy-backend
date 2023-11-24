@@ -15,9 +15,13 @@ const getSinglePerson = async (req: Request, res: Response) => {
   }
 };
 
-const getAllPeople = async (req: Request, res: Response) => {
+const getPeopleByPage = async (req: Request, res: Response) => {
   try {
-    const { data: people } = await axios.get(`https://swapi.dev/api/people`);
+    const pageId = req.params.pageId;
+    console.log(pageId)
+    const { data: people } = await axios.get(
+      `https://swapi.dev/api/people/?page=${pageId}`
+    );
     return people
       ? res.status(200).json({ people })
       : res.status(404).json({ message: "Not Found" });
@@ -43,5 +47,4 @@ const getSortedPeople = async (req: Request, res: Response) => {
   }
 };
 
-export default { getSinglePerson, getAllPeople, getSortedPeople };
- 
+export default { getSinglePerson, getPeopleByPage, getSortedPeople };
