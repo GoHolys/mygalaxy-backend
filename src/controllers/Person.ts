@@ -18,7 +18,6 @@ const getSinglePerson = async (req: Request, res: Response) => {
 const getPeopleByPage = async (req: Request, res: Response) => {
   try {
     const pageId = req.params.pageId;
-    console.log(pageId)
     const { data: people } = await axios.get(
       `https://swapi.dev/api/people/?page=${pageId}`
     );
