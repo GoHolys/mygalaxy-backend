@@ -44,3 +44,4 @@ const getSortedPeople = async (req: Request, res: Response) => {
 };
 
 export default { getSinglePerson, getAllPeople, getSortedPeople };
+ 

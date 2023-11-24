@@ -1,7 +1,7 @@
 import NodeCache from "node-cache";
 import { Request, Response, NextFunction } from "express";
 
-const cache = new NodeCache();
+const cache = new NodeCache({useClones: false});
 
 export const cacheRoute =
   (duration: number) => (req: Request, res: Response, next: NextFunction) => {
