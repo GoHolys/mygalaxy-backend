@@ -11,5 +11,10 @@ This project is Express-based RESTful API that interacts with the Star Wars API 
 3. Install dependencies with `npm install`.
 4. Start the development server with `npm start`.
 
+## Usage
 
+Instructions on how to use the project -
 
+1. You'll be able to interact with this RESTful API by using a API testing tool e.g. Postman. 
+
+2. Caching is implemented. You'll be able to find the related code in the file Caching.ts
