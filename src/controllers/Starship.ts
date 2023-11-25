@@ -15,10 +15,11 @@ const getSingleStarship = async (req: Request, res: Response) => {
   }
 };
 
-const getAllStarships = async (req: Request, res: Response) => {
+const getStarshipsByPage = async (req: Request, res: Response) => {
   try {
+    const pageId = req.params.pageId;
     const { data: starships } = await axios.get(
-      `https://swapi.dev/api/starships`
+      `https://swapi.dev/api/starships?page=${pageId}`
     );
     return starships
       ? res.status(200).json({ starships })
@@ -47,4 +48,4 @@ const getSortedstarships = async (req: Request, res: Response) => {
   }
 };
 
-export default { getSingleStarship, getAllStarships, getSortedstarships };
+export default { getSingleStarship, getStarshipsByPage, getSortedstarships };

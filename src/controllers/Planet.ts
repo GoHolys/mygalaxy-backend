@@ -15,9 +15,12 @@ const getSinglePlanet = async (req: Request, res: Response) => {
   }
 };
 
-const getAllPlanets = async (req: Request, res: Response) => {
+const getPlanetsByPage = async (req: Request, res: Response) => {
   try {
-    const { data: planets } = await axios.get(`https://swapi.dev/api/planets`);
+    const pageId = req.params.pageId;
+    const { data: planets } = await axios.get(
+      `https://swapi.dev/api/planets?page=${pageId}`
+    );
     return planets
       ? res.status(200).json({ planets })
       : res.status(404).json({ message: "Not Found" });
@@ -43,4 +46,4 @@ const getSortedPlanets = async (req: Request, res: Response) => {
   }
 };
 
-export default { getSinglePlanet, getAllPlanets, getSortedPlanets };
+export default { getSinglePlanet, getPlanetsByPage, getSortedPlanets };

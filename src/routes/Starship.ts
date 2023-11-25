@@ -3,8 +3,8 @@ import controller from "../controllers/Starship";
 
 const router = express.Router();
 
-router.get("/", controller.getAllStarships);
 router.get("/sorted/:orderId", controller.getSortedstarships);
-router.get("/:starshipId", controller.getSingleStarship);
+router.get("/starship/:starshipId", controller.getSingleStarship);
+router.get("/:pageId", controller.getStarshipsByPage);
 
 export = router;
