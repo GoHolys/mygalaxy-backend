@@ -3,7 +3,6 @@ import controller from "../controllers/Planet";
 
 const router = express.Router();
 
-router.get("/sorted/:orderId", controller.getSortedPlanets);
 router.get("/:pageId", controller.getPlanetsByPage);
 router.get("/planet/:planetId", controller.getSinglePlanet);
 

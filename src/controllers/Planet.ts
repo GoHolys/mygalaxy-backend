@@ -29,21 +29,5 @@ const getPlanetsByPage = async (req: Request, res: Response) => {
   }
 };
 
-const getSortedPlanets = async (req: Request, res: Response) => {
-  try {
-    const sortOrder = req.params.orderId;
-    const { data: planets } = await axios.get(`https://swapi.dev/api/planets`);
-    const sortedPlanets = planets.results.sort((a: any, b: any) => {
-      return sortOrder === "1"
-        ? b.name.localeCompare(a.name)
-        : a.name.localeCompare(b.name);
-    });
-    return sortedPlanets
-      ? res.status(200).json({ sortedPlanets })
-      : res.status(404).json({ message: "Not Found" });
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-};
 
-export default { getSinglePlanet, getPlanetsByPage, getSortedPlanets };
+export default { getSinglePlanet, getPlanetsByPage };

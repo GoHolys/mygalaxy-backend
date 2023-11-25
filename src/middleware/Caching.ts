@@ -1,7 +1,7 @@
 import NodeCache from "node-cache";
 import { Request, Response, NextFunction } from "express";
 
-const cache = new NodeCache({useClones: false});
+const cache = new NodeCache({ useClones: false });
 
 export const cacheRoute =
   (duration: number) => (req: Request, res: Response, next: NextFunction) => {
@@ -18,7 +18,7 @@ export const cacheRoute =
     } else {
       let originalJson = res.json.bind(res);
 
-      res.json = (body: any): Response<any, Record<string, any>> => {
+      res.json = (body) => {
         originalJson(body);
         cache.set(key, body, duration);
         return res;

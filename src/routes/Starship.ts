@@ -3,7 +3,6 @@ import controller from "../controllers/Starship";
 
 const router = express.Router();
 
-router.get("/sorted/:orderId", controller.getSortedstarships);
 router.get("/starship/:starshipId", controller.getSingleStarship);
 router.get("/:pageId", controller.getStarshipsByPage);
 

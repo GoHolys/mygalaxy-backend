@@ -29,23 +29,5 @@ const getStarshipsByPage = async (req: Request, res: Response) => {
   }
 };
 
-const getSortedstarships = async (req: Request, res: Response) => {
-  try {
-    const sortOrder = req.params.orderId;
-    const { data: starships } = await axios.get(
-      `https://swapi.dev/api/starships`
-    );
-    const sortedStarships = starships.results.sort((a: any, b: any) => {
-      return sortOrder === "1"
-        ? b.name.localeCompare(a.name)
-        : a.name.localeCompare(b.name);
-    });
-    return sortedStarships
-      ? res.status(200).json({ sortedStarships })
-      : res.status(404).json({ message: "Not Found" });
-  } catch (error) {
-    res.status(500).json({ error });
-  }
-};
 
-export default { getSingleStarship, getStarshipsByPage, getSortedstarships };
+export default { getSingleStarship, getStarshipsByPage };
